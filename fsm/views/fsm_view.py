@@ -21,8 +21,7 @@ from errors.error_codes import serialize_error
 from fsm.filtersets import FSMFilterSet
 from fsm.models import FSM, State, PlayerHistory, Player, Edge, logging, RegistrationReceipt, Problem
 from fsm.permissions import MentorPermission, HasActiveRegistration, PlayerViewerPermission
-from fsm.serializers.fsm_serializers import FSMSerializer, FSMGetSerializer, KeySerializer, EdgeSerializer, \
-    TeamGetSerializer
+from fsm.serializers.fsm_serializers import FSMSerializer, KeySerializer, EdgeSerializer, TeamGetSerializer
 from fsm.serializers.paper_serializers import StateSerializer, StateSimpleSerializer, EdgeSimpleSerializer
 from fsm.serializers.player_serializer import PlayerSerializer, PlayerHistorySerializer
 from fsm.serializers.widget_serializers import MockWidgetSerializer, WidgetPolymorphicSerializer

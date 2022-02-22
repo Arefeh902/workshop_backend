@@ -321,6 +321,10 @@ class FSM(models.Model):
 
     objects = FSMManager()
 
+    @property
+    def is_exam(self):
+        return self.first_state.is_exam if self.first_state else False
+
     # TODO - make locks as mixins
 
     def __str__(self):

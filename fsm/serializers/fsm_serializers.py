@@ -137,6 +137,7 @@ class FSMSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         representation = super(FSMSerializer, self).to_representation(instance)
+        representation['is_exam'] = getattr(instance, 'is_exam')
         user = self.context.get('user', None)
         player = user.players.filter(is_active=True, fsm=instance).first()
         representation['player'] = player.id if player else 'NotStarted'
@@ -176,26 +177,6 @@ class FSMSerializer(serializers.ModelSerializer):
         model = FSM
         fields = '__all__'
         read_only_fields = ['id', 'creator', 'mentors', 'first_state', 'registration_form']
-
-
-class FSMRawSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = FSM
-        fields = '__all__'
-
-
-class CreateFSMSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = FSM
-        fields = ['name', 'type', 'active', ]
-
-
-class FSMGetSerializer(serializers.ModelSerializer):
-    states = StateSerializer(many=True)
-
-    class Meta:
-        model = FSM
-        fields = '__all__'
 
 
 class EdgeSerializer(serializers.ModelSerializer):
